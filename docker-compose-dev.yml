@@ -1,0 +1,9 @@
+﻿version: '2'
+services:
+  test-pomelo-app:
+    build: .
+    image: gridvo/test-pomelo-app:dev
+    container_name: test-pomelo-app
+    ports:
+      - "127.0.0.1:3150:3150"
+      - "127.0.0.1:3011:3011"
