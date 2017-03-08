@@ -6,4 +6,4 @@ services:
     container_name: test-pomelo-app
     ports:
       - "127.0.0.1:3150:3150"
-      - "127.0.0.1:3011:3011"
+      - "127.0.0.1:443:443"

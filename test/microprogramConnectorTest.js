@@ -7,7 +7,7 @@ describe('microprogramConnector test', () => {
         context('client request', () => {
             let client;
             it('request route can get response', done => {
-                client = new WebSocket('wss://127.0.0.1:3011');
+                client = new WebSocket('wss://www.gridvo.com');
                 client.on('open', () => {
                     client.send(JSON.stringify({
                         id: "request-test",
@@ -20,8 +20,6 @@ describe('microprogramConnector test', () => {
                     done();
                 });
                 client.on('message', (data, flags) => {
-                    console.log(data);
-                    console.log(flags);
                     let msg = JSON.parse(data);
                     msg.id.should.eql("request-test");
                     msg.body.test1.should.eql(1);
@@ -49,7 +47,7 @@ describe('microprogramConnector test', () => {
                         }
                     }
                 };
-                client = new WebSocket('ws://127.0.0.1:3011');
+                client = new WebSocket('wss://www.gridvo.com');
                 client.on('open', () => {
                     client.send(JSON.stringify({
                         id: "push-test",
@@ -58,8 +56,6 @@ describe('microprogramConnector test', () => {
                     }));
                 });
                 client.on('message', (data, flags) => {
-                    console.log(data);
-                    console.log(flags);
                     doneMore();
                 });
             });
