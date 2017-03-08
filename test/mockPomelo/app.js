@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const pomelo = require('pomelo');
 const MicroprogramConnector = require('../../lib/websocketConnector');
 
@@ -9,7 +10,12 @@ app.set('name', 'test-app');
 app.configure('production|development', 'connector', () => {
     app.set('connectorConfig',
         {
-            connector: MicroprogramConnector
+            connector: MicroprogramConnector,
+            ssl: {
+                key: fs.readFileSync(`${__dirname }/keys/gridvocomrsa.key`),
+                ca: [fs.readFileSync(`${__dirname }/keys/1_root_bundle.crt`)],
+                cert: fs.readFileSync(`${__dirname }/keys/1_www.gridvo.com_bundle.crt`)
+            }
         });
 });
 

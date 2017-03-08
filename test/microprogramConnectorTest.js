@@ -7,7 +7,7 @@ describe('microprogramConnector test', () => {
         context('client request', () => {
             let client;
             it('request route can get response', done => {
-                client = new WebSocket('ws://127.0.0.1:3011');
+                client = new WebSocket('wss://127.0.0.1:3011');
                 client.on('open', () => {
                     client.send(JSON.stringify({
                         id: "request-test",
